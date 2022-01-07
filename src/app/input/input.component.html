@@ -1,0 +1,22 @@
+<!-- <p>input works!</p> -->
+<div class="field">
+    <label class="label">{{label}}</label>
+<input class="input"
+[formControl]="control"
+[ngClass]="{'is-danger':control.dirty && control.touched && control.errors}"
+ />  <!--No []; its not code  -->
+<ng-container *ngIf="control.dirty && control.touched && control.errors">
+<div class="help is-danger" *ngIf="control.errors.required">
+    Value is required!
+</div>
+<div class="help is-danger" *ngIf="control.errors.minlength"> <!--Notice small 'l'-->
+    Value shud be greater than 3!
+</div>
+<div class="help is-danger" *ngIf="control.errors.maxlength"> <!--Notice small 'l'-->
+    Value shud be less than 10!
+</div>
+<div class="help is-danger" *ngIf="control.errors.pattern"> <!--Notice small 'l'-->
+   Invalid Format
+</div>
+</ng-container>
+</div>

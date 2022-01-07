@@ -1,0 +1,22 @@
+
+<app-card [name]="cardForm.get('name').value"
+ [cardNumber]="cardForm.get('cardnumber').value"
+ [expiration]="cardForm.get('expiry').value" ></app-card>
+
+<form [formGroup]="cardForm" (submit)="onSubmit()">
+<app-input label="Name" [control]="cardForm.get('name')"></app-input>
+<app-input label="Card Number" [control]="cardForm.get('cardnumber')"></app-input>
+<app-input label="Expiry" [control]="cardForm.get('expiry')"></app-input>
+<app-input label="Security" [control]="cardForm.get('security')"></app-input>
+
+<button class="button is-primary submm" [disabled]="cardForm.invalid" type="submit"  >Submit</button>
+<button class="button is-warning rst" type="button" (click)="onResetSubmit()">Reset</button>
+</form>
+
+<div>Form Contents:{{cardForm.value | json}}</div>
+<div>Form is valid: {{cardForm.valid}} </div>
+<div>Forms Errors: {{cardForm.controls.name.errors | json}}</div>
+<!-- <div>Forms Errors: {{cardForm.controls.cardnumber.errors | json}}</div>
+<div>Forms Errors: {{cardForm.controls.expiry.errors | json}}</div>
+<div>Forms Errors: {{cardForm.controls.security.errors | json}}</div> -->
+<!-- <div>Forms errors: {{cardForm.get('name').errors | json}}</div> Another method -->
